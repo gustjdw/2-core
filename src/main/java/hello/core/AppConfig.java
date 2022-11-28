@@ -22,16 +22,19 @@ public class AppConfig {  // Application의 실제 동작에 필요한 "구현 �
 
     @Bean
     public MemberRepository memberRepository() {  // 역할
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();  // 구현 클래스
     }
 
     @Bean
     public MemberService memberService() {  // 역할
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());  // 구현 클래스
     }
 
     @Bean
     public OrderService orderService() {  // 역할
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());  // 구현 클래스
     }
 }
